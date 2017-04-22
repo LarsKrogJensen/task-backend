@@ -1,0 +1,16 @@
+server:
+  port: ${PORT:8080}
+  
+spring.data.mongodb.uri: ${MONGODB_URI:mongodb://192.168.1.36:27017/test}
+
+#spring:
+#    datasource:
+#        hikari:
+#            connection-test-query: SELECT 1 FROM tasks
+#            minimum-idle: 1
+#            maximum-pool-size: 5
+#            pool-name: taskPool
+#            username: postgres
+#            password: postgres
+#            driver-class-name: org.postgresql.ds.PGSimpleDataSource
+#            jdbc-url: jdbc:postgresql://192.168.1.36:5432/tasks

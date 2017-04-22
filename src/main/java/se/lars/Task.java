@@ -1,45 +1,46 @@
 package se.lars;
 
-import java.io.Serializable;
 
-public class Task implements Serializable{
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "tasks")
+public class Task {
+    @Id
     private long id;
-    private boolean completed;
     private String title;
+    private boolean completed;
 
-    // required by jackson
     public Task() {
     }
 
-    public Task(long id, boolean completed, String title) {
+    public Task(long id) {
         this.id = id;
-        this.completed = completed;
-        this.title = title;
     }
 
     public long getId() {
         return id;
     }
 
-    public boolean isCompleted() {
-        return completed;
-    }
-
     public String getTitle() {
         return title;
     }
+
+    public boolean isCompleted() {
+        return completed;
+    }
 }
+//@Value.Immutable
+//@Document(collection = "tasks")
+//@JsonSerialize(as = ImmutableTask.class)
+//@JsonDeserialize(as = ImmutableTask.class)
+//public interface Task {
+//    @Id
+//    @Value.Parameter
+//    String id();
 //
-//class CustomSerializer implements Serializer<Task>, Serializable {
+//    @Value.Parameter
+//    boolean completed();
 //
-//    @Override
-//    public void serialize(DataOutput out, Task value) throws IOException {
-//        out.writeUTF(value.getName());
-//        out.writeUTF(value.getCity());
-//    }
-//
-//    @Override
-//    public Task deserialize(DataInput in, int available) throws IOException {
-//        return new Task(in.readUTF(), in.readUTF());
-//    }
+//    Optional<String> title();
 //}
